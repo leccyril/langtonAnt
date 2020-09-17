@@ -2,8 +2,6 @@ package com.langton.service;
 
 import java.io.File;
 
-import org.springframework.core.io.Resource;
-
 import com.langton.model.Grid;
 
 /**
