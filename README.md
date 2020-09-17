@@ -25,7 +25,7 @@ Build the jar, at the root of project where pom.xml is located
 ```bash
 mvn clean install
 ```
-in /target file a jar will be created after unit tests and IT tests will be launched (not forget to change application.properties values). This jar will be created langtonAnt-0.0.1-SNAPSHOT, please rename it langtonAnt.jar and paste it where you want execute the project
+in /target file a jar will be created after unit tests and IT tests will be launched (not forget to change application.properties values). This jar will be created langtonAnt-{version}, please rename it langtonAnt.jar and paste it where you want execute the project
 
 then copy the file application.properties in the same folder and change values
 
