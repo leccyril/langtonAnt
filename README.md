@@ -62,6 +62,23 @@ http://localhost:{port}/api/download
 
 the file is an infinite grid and will be resized following step number and size of cells walked
 
+## Customization
+
+Several properties are customizables
+
+application.ant.orientation # ant first orientation
+application.grid.color #the grid base color
+
+application.grid.x.size #first grid size
+application.grid.y.size #first grid size
+
+server.port # server access port
+
+application.file.path
+application.file.name
+application.file.format # result file conf
+
+
 ## Contributing
 It is free project please not contribute. for bug please open ticket
 
