@@ -15,59 +15,40 @@ import com.langton.model.Orientation;
 @SpringBootTest
 public class AntHelperTest {
 	
-	@Test
-	public void revertColorToBlackTest(){
-		Grid grid = new Grid(Color.WHITE, 100, 100);
-		AntHelper.revertColorBaseCell(Color.WHITE, grid, 10, 10);
-		assertEquals(Color.BLACK,grid.getCells().get(new Cell(10,10)));		
-	}
 	
-	@Test
-	public void revertColorToWhiteTest(){
-		Grid grid = new Grid(Color.WHITE, 100, 100);
-		AntHelper.revertColorBaseCell(Color.BLACK, grid, 10, 10);
-		assertEquals(Color.WHITE,grid.getCells().get(new Cell(10,10)));		
-	}
-	
-	@Test
-	public void revertColorNulleTest(){
-		Assertions.assertThrows(NullPointerException.class, () -> {
-			AntHelper.revertColorBaseCell(Color.BLACK, null, 10, 10);
-		});	
-	}
 	
 	@Test
 	public void setNewOrientationFromBlackNorthTest(){
 		Ant ant = new Ant(Orientation.NORTH,10,10);
-		AntHelper.setNewOrientation(ant, Color.BLACK);
+		AntHelper.updateAntOrientationFromCellColor(ant, Color.BLACK);
 		assertEquals(Orientation.WEST,ant.getOrientation());		
 	}
 	
 	@Test
 	public void setNewOrientationFromWhiteSouthTest(){
 		Ant ant = new Ant(Orientation.SOUTH,10,10);
-		AntHelper.setNewOrientation(ant, Color.WHITE);
+		AntHelper.updateAntOrientationFromCellColor(ant, Color.WHITE);
 		assertEquals(Orientation.WEST,ant.getOrientation());		
 	}
 	
 	@Test
 	public void setNewOrientationNullInputTest() {
 		Assertions.assertThrows(NullPointerException.class, () -> {
-			AntHelper.setNewOrientation(null, null);
+			AntHelper.updateAntOrientationFromCellColor(null, null);
 		});
 	}
 	
 	@Test
 	public void setNewOrientationNullFromWhiteInputTest() {
 		Assertions.assertThrows(NullPointerException.class, () -> {
-			AntHelper.setNewOrientation(null, Color.WHITE);
+			AntHelper.updateAntOrientationFromCellColor(null, Color.WHITE);
 		});
 	}
 	
 	@Test
 	public void setNewOrientationNullFromBlackInputTest() {
 		Assertions.assertThrows(NullPointerException.class, () -> {
-			AntHelper.setNewOrientation(null, Color.BLACK);
+			AntHelper.updateAntOrientationFromCellColor(null, Color.BLACK);
 		});
 	}
 	

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.langton.helper.AntHelper;
+import com.langton.helper.GridHelper;
 import com.langton.model.Ant;
 import com.langton.model.Cell;
 import com.langton.model.Color;
@@ -61,31 +62,24 @@ public class AntServiceImpl implements IAntService {
 		
 		logger.debug("ant move forward");
 				
-		grid.getCells().putIfAbsent(new Cell(ant.getX(),ant.getY()),grid.getBaseColor());
+		grid.getCells().putIfAbsent(new Cell(ant.getX(),ant.getY()),grid.getBaseColor());		
 		
-		if(grid.getWidth()<ant.getX()) {
-			grid.setWidth(ant.getX());
-		}else if(ant.getX()<0) {
-			grid.setMinWidth(ant.getX());
-		}
-		
-		if(grid.getHeight()<ant.getY()) {
-			grid.setHeight(ant.getY());
-		}else if(ant.getY()<0) {
-			grid.setMinHeight(ant.getY());
-		}
+		GridHelper.updateWidhtAndHeight(grid, ant);
 		
 		Color currentColor = grid.getCells().get(new Cell(ant.getX(),ant.getY()));
-		
-		logger.debug("current color {}",currentColor);
-		
-		AntHelper.setNewOrientation(ant, currentColor);
-		AntHelper.revertColorBaseCell(currentColor, grid, ant.getX(), ant.getY());
+				
+		//first we set the new orientation
+		AntHelper.updateAntOrientationFromCellColor(ant, currentColor);
+		//then we revert the current cell color
+		GridHelper.revertCellColorFromByPosition(currentColor, grid, ant.getX(), ant.getY());
+		//and move forward the ant
 		AntHelper.updateAntPosition(ant);
 		
-		logger.debug("ant orientation {}",ant.getOrientation());
-		logger.debug("ant x position {}",ant.getX());
-		logger.debug("ant y position {}",ant.getY());
+		if(logger.isDebugEnabled()) {
+			logger.debug("current color {}",currentColor);
+			logger.debug("ant orientation {}",ant.getOrientation());
+			logger.debug("ant x position {} and y {}",ant.getX(),ant.getY());
+		}
 
 	}
 

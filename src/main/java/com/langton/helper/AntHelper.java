@@ -16,7 +16,7 @@ import com.langton.model.Orientation;
  */
 public class AntHelper {
 	
-	public final static String ANT_NULL_MSG="ant could not be null";
+	public static final String ANT_NULL_MSG="ant could not be null";
 
 	private AntHelper() {
 		throw new AssertionError("You can not instanciate this class");
@@ -27,20 +27,20 @@ public class AntHelper {
 	 * @param ant
 	 * @param color
 	 */
-	public static void setNewOrientation(Ant ant, Color color) {
+	public static void updateAntOrientationFromCellColor(Ant ant, Color color) {
 
 		Validate.notNull(ant, ANT_NULL_MSG);
 		Validate.notNull(color, "color could not be null");
 
 		switch (color) {
 		case WHITE:
-			setNewOrientationFromWhite(ant);
+			updateOrientationFromWhiteCell(ant);
 			break;
 		case BLACK:
-			setNewOrientationFromBlack(ant);
+			updateOrientationFromBlackCell(ant);
 			break;
 		default:
-			setNewOrientationFromWhite(ant);
+			updateOrientationFromWhiteCell(ant);
 			break;
 		}
 
@@ -72,7 +72,7 @@ public class AntHelper {
 	 * 
 	 * @param ant
 	 */
-	private static void setNewOrientationFromBlack(Ant ant) {
+	private static void updateOrientationFromBlackCell(Ant ant) {
 
 		Validate.notNull(ant, ANT_NULL_MSG);
 
@@ -92,7 +92,7 @@ public class AntHelper {
 	 * 
 	 * @param ant
 	 */
-	private static void setNewOrientationFromWhite(Ant ant) {
+	private static void updateOrientationFromWhiteCell(Ant ant) {
 
 		Validate.notNull(ant, ANT_NULL_MSG);
 
@@ -107,21 +107,5 @@ public class AntHelper {
 		}
 	}
 
-	/**
-	 * Will revert the color grid following the current color cell
-	 * 
-	 * @param currentColor
-	 * @param grid
-	 * @param ant
-	 */
-	public static void revertColorBaseCell(Color currentColor, Grid grid, int x, int y) {
-		
-		Validate.notNull(grid, "grid could not be null");
-		
-		Validate.notNull(currentColor, "current color could not be null");
-
-		grid.getCells().replace(new Cell(x, y), (currentColor == Color.WHITE) ? Color.BLACK : Color.WHITE);
-
-	}
 
 }

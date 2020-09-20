@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.langton</groupId>
 	<artifactId>langtonAnt</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>langtonAnt</name>
 	<description>langton Ant Spring boot api</description>
 
