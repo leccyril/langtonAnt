@@ -17,8 +17,9 @@ import com.langton.service.IFileStorageService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
-@Api(value="Will launch the langton")
+@Api(value="Spring boot REST Api for the Langton ant algorithm")
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api")
@@ -33,15 +34,19 @@ public class AntController {
     private IFileStorageService fileStorageService;
 	
     @ApiOperation(value = "Launch langton ant algortithm following step number parameter")
-    //​@ApiParam(name = stepNumber,​required = true, type=String.class)
 	@PutMapping(value = "/{stepNumber}")
-	public String launchAnt(@PathVariable("stepNumber") int stepNumber){
+	public String launchAnt(@ApiParam(
+		    name =  "stepNumber",
+		    type = "int",
+		    value = "step number for ant to execute",
+		    example = "11000",
+		    required = true) @PathVariable("stepNumber") int stepNumber){
 		service.launchAnt(stepNumber);
 		return "process finished file available";
 		
 	}
     
-    @ApiOperation(value = "downlad file generated")
+    @ApiOperation(value = "Download file generated")
     @GetMapping(value="/download")
     public ResponseEntity<Resource> downloadFile() {
        return fileStorageService.loadFileAsResource();
