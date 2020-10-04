@@ -7,12 +7,15 @@ import java.util.Map;
 
 import lombok.Data;
 
-
+/**
+ * The grid where ant will walk, it is composed from cells
+ * @author Administrator
+ *
+ */
 @Data
 public class Grid {
     
 	private Map<Cell, Color> cells=new HashMap<>();
-    //private Color[][] cell;
     private int width,height, minWidth, minHeight;
     
     private Color baseColor;
@@ -33,13 +36,5 @@ public class Grid {
         	}
         } 	
     }
-//    	cell = new Color[width][height];
-//        for(int i=0;i<width;i++) {
-//        	for (int j=0;j<height;j++) {
-//        		cell[i][j]=color;
-//        	}
-//        }
-//    }
 
-  
 }

@@ -2,6 +2,11 @@ package com.langton.model;
 
 import lombok.Data;
 
+/**
+ * Ant used to walk on the grid
+ * @author Administrator
+ *
+ */
 @Data
 public class Ant {
 

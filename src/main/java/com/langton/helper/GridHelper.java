@@ -6,10 +6,9 @@ import com.langton.model.Ant;
 import com.langton.model.Cell;
 import com.langton.model.Color;
 import com.langton.model.Grid;
-import com.langton.model.Orientation;
 
 /**
- * Used to help ant objet with orientation or position
+ * Used to help ant object with orientation or position
  * 
  * @author Administrator
  *
@@ -57,7 +56,7 @@ public class GridHelper {
 	 */
 	public static void revertCellColorFromByPosition(Color currentColor, Grid grid, int x, int y) {
 		
-		Validate.notNull(grid, "grid could not be null");
+		Validate.notNull(grid, GRID_NULL_MSG);
 		
 		Validate.notNull(currentColor, "current color could not be null");
 

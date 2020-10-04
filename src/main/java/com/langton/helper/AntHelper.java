@@ -3,9 +3,7 @@ package com.langton.helper;
 import org.apache.commons.lang3.Validate;
 
 import com.langton.model.Ant;
-import com.langton.model.Cell;
 import com.langton.model.Color;
-import com.langton.model.Grid;
 import com.langton.model.Orientation;
 
 /**
